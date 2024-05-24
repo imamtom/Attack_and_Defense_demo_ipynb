@@ -3902,4 +3902,756 @@ Client7 local model, Epoch: 9, Loss: 6968703666.0000
 defense_method:  FedAvg
 本轮被聚合的客户端数量:  20
 aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-aggregated_clients_weights:  
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 29, Accuracy: 0.1009, ASR: 0.0000
+Global round: 30==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 887116002.7995
+Client9 local model, Epoch: 9, Loss: 464651777.9785
+Client10 local model, Epoch: 9, Loss: 846636304.8726
+Client11 local model, Epoch: 9, Loss: 685885434.5509
+Client12 local model, Epoch: 9, Loss: 802633597.5144
+Client13 local model, Epoch: 9, Loss: 857266789.1116
+Client14 local model, Epoch: 9, Loss: 861221640.6888
+Client15 local model, Epoch: 9, Loss: 643406398.1899
+Client16 local model, Epoch: 9, Loss: 696399485.5978
+Client17 local model, Epoch: 9, Loss: 1098588691.1838
+Client18 local model, Epoch: 9, Loss: 1030571788.0000
+Client19 local model, Epoch: 9, Loss: 537834584.9491
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 12389434868.4800
+Client1 local model, Epoch: 9, Loss: 6952955586.6667
+Client2 local model, Epoch: 9, Loss: 9157306002.2857
+Client3 local model, Epoch: 9, Loss: 5595257223.3846
+Client4 local model, Epoch: 9, Loss: 10700369313.2308
+Client5 local model, Epoch: 9, Loss: 10452422881.3333
+Client6 local model, Epoch: 9, Loss: 9046640288.0000
+Client7 local model, Epoch: 9, Loss: 7365999114.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 30, Accuracy: 0.1009, ASR: 0.0000
+Global round: 31==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 941001262.4688
+Client9 local model, Epoch: 9, Loss: 504916690.8594
+Client10 local model, Epoch: 9, Loss: 884788023.8606
+Client11 local model, Epoch: 9, Loss: 724081031.9306
+Client12 local model, Epoch: 9, Loss: 855169792.7440
+Client13 local model, Epoch: 9, Loss: 910993129.5246
+Client14 local model, Epoch: 9, Loss: 923861480.8581
+Client15 local model, Epoch: 9, Loss: 672767606.3702
+Client16 local model, Epoch: 9, Loss: 739534033.1290
+Client17 local model, Epoch: 9, Loss: 1150031246.8824
+Client18 local model, Epoch: 9, Loss: 1102426689.9489
+Client19 local model, Epoch: 9, Loss: 562334377.0729
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 12992323813.1200
+Client1 local model, Epoch: 9, Loss: 7319953522.6667
+Client2 local model, Epoch: 9, Loss: 9630878553.9048
+Client3 local model, Epoch: 9, Loss: 5894108484.9231
+Client4 local model, Epoch: 9, Loss: 11223194838.1538
+Client5 local model, Epoch: 9, Loss: 10960735126.6667
+Client6 local model, Epoch: 9, Loss: 9498375907.0476
+Client7 local model, Epoch: 9, Loss: 7740468250.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 31, Accuracy: 0.1009, ASR: 0.0000
+Global round: 32==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 966346454.4219
+Client9 local model, Epoch: 9, Loss: 516843514.4766
+Client10 local model, Epoch: 9, Loss: 952021701.9159
+Client11 local model, Epoch: 9, Loss: 770208517.2708
+Client12 local model, Epoch: 9, Loss: 899078234.9279
+Client13 local model, Epoch: 9, Loss: 967393148.6004
+Client14 local model, Epoch: 9, Loss: 980037523.6589
+Client15 local model, Epoch: 9, Loss: 726159782.9435
+Client16 local model, Epoch: 9, Loss: 771027031.0151
+Client17 local model, Epoch: 9, Loss: 1225213545.3529
+Client18 local model, Epoch: 9, Loss: 1163408228.4148
+Client19 local model, Epoch: 9, Loss: 600309331.6306
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 13603599225.6000
+Client1 local model, Epoch: 9, Loss: 7691927906.6667
+Client2 local model, Epoch: 9, Loss: 10081196033.5238
+Client3 local model, Epoch: 9, Loss: 6187906107.0769
+Client4 local model, Epoch: 9, Loss: 11770833687.3846
+Client5 local model, Epoch: 9, Loss: 11499694210.6667
+Client6 local model, Epoch: 9, Loss: 9951119419.4286
+Client7 local model, Epoch: 9, Loss: 8141722420.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 32, Accuracy: 0.1009, ASR: 0.0000
+Global round: 33==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1049077373.9635
+Client9 local model, Epoch: 9, Loss: 538539990.4980
+Client10 local model, Epoch: 9, Loss: 994294898.8269
+Client11 local model, Epoch: 9, Loss: 818879090.5463
+Client12 local model, Epoch: 9, Loss: 950378467.1743
+Client13 local model, Epoch: 9, Loss: 1003643536.4085
+Client14 local model, Epoch: 9, Loss: 1028094133.4701
+Client15 local model, Epoch: 9, Loss: 747500623.8197
+Client16 local model, Epoch: 9, Loss: 825799292.7253
+Client17 local model, Epoch: 9, Loss: 1291589934.5882
+Client18 local model, Epoch: 9, Loss: 1213642887.8494
+Client19 local model, Epoch: 9, Loss: 630586341.1146
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 14247391060.4800
+Client1 local model, Epoch: 9, Loss: 8063872330.6667
+Client2 local model, Epoch: 9, Loss: 10553578220.1905
+Client3 local model, Epoch: 9, Loss: 6490640061.5385
+Client4 local model, Epoch: 9, Loss: 12296429316.9231
+Client5 local model, Epoch: 9, Loss: 12007861992.0000
+Client6 local model, Epoch: 9, Loss: 10423830160.7619
+Client7 local model, Epoch: 9, Loss: 8534892350.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 33, Accuracy: 0.1009, ASR: 0.0000
+Global round: 34==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1090534587.6667
+Client9 local model, Epoch: 9, Loss: 588323237.6094
+Client10 local model, Epoch: 9, Loss: 1029271393.2981
+Client11 local model, Epoch: 9, Loss: 862582878.8565
+Client12 local model, Epoch: 9, Loss: 993673284.0625
+Client13 local model, Epoch: 9, Loss: 1066870500.7746
+Client14 local model, Epoch: 9, Loss: 1083928280.6771
+Client15 local model, Epoch: 9, Loss: 797299022.3365
+Client16 local model, Epoch: 9, Loss: 871032441.9718
+Client17 local model, Epoch: 9, Loss: 1382861113.0441
+Client18 local model, Epoch: 9, Loss: 1273107159.4006
+Client19 local model, Epoch: 9, Loss: 665801344.2356
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 14853876381.4400
+Client1 local model, Epoch: 9, Loss: 8445145122.6667
+Client2 local model, Epoch: 9, Loss: 11036043765.3333
+Client3 local model, Epoch: 9, Loss: 6793480583.3846
+Client4 local model, Epoch: 9, Loss: 12819688071.3846
+Client5 local model, Epoch: 9, Loss: 12551902094.6667
+Client6 local model, Epoch: 9, Loss: 10905083628.1905
+Client7 local model, Epoch: 9, Loss: 8897716616.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 34, Accuracy: 0.1009, ASR: 0.0000
+Global round: 35==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1159591377.2083
+Client9 local model, Epoch: 9, Loss: 619746842.4043
+Client10 local model, Epoch: 9, Loss: 1114319925.5385
+Client11 local model, Epoch: 9, Loss: 901860501.2130
+Client12 local model, Epoch: 9, Loss: 1051008855.0601
+Client13 local model, Epoch: 9, Loss: 1111236755.7835
+Client14 local model, Epoch: 9, Loss: 1134349333.9766
+Client15 local model, Epoch: 9, Loss: 837913347.6490
+Client16 local model, Epoch: 9, Loss: 906851339.1935
+Client17 local model, Epoch: 9, Loss: 1413219856.2941
+Client18 local model, Epoch: 9, Loss: 1366527017.4716
+Client19 local model, Epoch: 9, Loss: 693677874.5337
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 15508171571.2000
+Client1 local model, Epoch: 9, Loss: 8829545272.0000
+Client2 local model, Epoch: 9, Loss: 11514300751.2381
+Client3 local model, Epoch: 9, Loss: 7102075975.3846
+Client4 local model, Epoch: 9, Loss: 13381619712.0000
+Client5 local model, Epoch: 9, Loss: 13092882344.0000
+Client6 local model, Epoch: 9, Loss: 11392984301.7143
+Client7 local model, Epoch: 9, Loss: 9318214184.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 35, Accuracy: 0.1009, ASR: 0.0000
+Global round: 36==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1204910354.2500
+Client9 local model, Epoch: 9, Loss: 647302651.6719
+Client10 local model, Epoch: 9, Loss: 1153155107.3029
+Client11 local model, Epoch: 9, Loss: 939918917.3241
+Client12 local model, Epoch: 9, Loss: 1091917148.8918
+Client13 local model, Epoch: 9, Loss: 1174890714.4018
+Client14 local model, Epoch: 9, Loss: 1199008842.6380
+Client15 local model, Epoch: 9, Loss: 885780451.7740
+Client16 local model, Epoch: 9, Loss: 960082684.6321
+Client17 local model, Epoch: 9, Loss: 1513147801.3309
+Client18 local model, Epoch: 9, Loss: 1437231133.8523
+Client19 local model, Epoch: 9, Loss: 723185058.9343
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 16104010659.8400
+Client1 local model, Epoch: 9, Loss: 9214051869.3333
+Client2 local model, Epoch: 9, Loss: 11998340079.2381
+Client3 local model, Epoch: 9, Loss: 7407329481.8462
+Client4 local model, Epoch: 9, Loss: 13935029060.9231
+Client5 local model, Epoch: 9, Loss: 13633633642.6667
+Client6 local model, Epoch: 9, Loss: 11867183945.1429
+Client7 local model, Epoch: 9, Loss: 9729768466.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 36, Accuracy: 0.1009, ASR: 0.0000
+Global round: 37==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1279633812.1250
+Client9 local model, Epoch: 9, Loss: 675334369.7109
+Client10 local model, Epoch: 9, Loss: 1214046184.1250
+Client11 local model, Epoch: 9, Loss: 996467179.6157
+Client12 local model, Epoch: 9, Loss: 1150370763.0120
+Client13 local model, Epoch: 9, Loss: 1219563041.1496
+Client14 local model, Epoch: 9, Loss: 1247073113.1562
+Client15 local model, Epoch: 9, Loss: 920095374.9808
+Client16 local model, Epoch: 9, Loss: 1004302224.7258
+Client17 local model, Epoch: 9, Loss: 1543034327.7059
+Client18 local model, Epoch: 9, Loss: 1500073622.1477
+Client19 local model, Epoch: 9, Loss: 764034693.1683
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 16771995548.1600
+Client1 local model, Epoch: 9, Loss: 9600351088.0000
+Client2 local model, Epoch: 9, Loss: 12479127832.3810
+Client3 local model, Epoch: 9, Loss: 7718808753.2308
+Client4 local model, Epoch: 9, Loss: 14483749952.0000
+Client5 local model, Epoch: 9, Loss: 14160210680.0000
+Client6 local model, Epoch: 9, Loss: 12358008394.6667
+Client7 local model, Epoch: 9, Loss: 10120383390.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 37, Accuracy: 0.1009, ASR: 0.0000
+Global round: 38==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1310578212.4844
+Client9 local model, Epoch: 9, Loss: 705990188.1680
+Client10 local model, Epoch: 9, Loss: 1268367344.3558
+Client11 local model, Epoch: 9, Loss: 1031429439.7818
+Client12 local model, Epoch: 9, Loss: 1210669074.0769
+Client13 local model, Epoch: 9, Loss: 1287612671.7679
+Client14 local model, Epoch: 9, Loss: 1303872993.8867
+Client15 local model, Epoch: 9, Loss: 958252054.1178
+Client16 local model, Epoch: 9, Loss: 1027360138.0192
+Client17 local model, Epoch: 9, Loss: 1632970709.1765
+Client18 local model, Epoch: 9, Loss: 1573592160.0966
+Client19 local model, Epoch: 9, Loss: 801640842.3622
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 17465077288.9600
+Client1 local model, Epoch: 9, Loss: 9992208074.6667
+Client2 local model, Epoch: 9, Loss: 12967455183.2381
+Client3 local model, Epoch: 9, Loss: 8035483724.3077
+Client4 local model, Epoch: 9, Loss: 15027011515.0769
+Client5 local model, Epoch: 9, Loss: 14739793514.6667
+Client6 local model, Epoch: 9, Loss: 12812623686.0952
+Client7 local model, Epoch: 9, Loss: 10515697016.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 38, Accuracy: 0.1009, ASR: 0.0000
+Global round: 39==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1389427320.8177
+Client9 local model, Epoch: 9, Loss: 743225547.0645
+Client10 local model, Epoch: 9, Loss: 1330587105.8558
+Client11 local model, Epoch: 9, Loss: 1069823633.1551
+Client12 local model, Epoch: 9, Loss: 1262363372.6226
+Client13 local model, Epoch: 9, Loss: 1343912451.0692
+Client14 local model, Epoch: 9, Loss: 1362365345.7331
+Client15 local model, Epoch: 9, Loss: 1000401946.9231
+Client16 local model, Epoch: 9, Loss: 1099679448.8639
+Client17 local model, Epoch: 9, Loss: 1720821744.7353
+Client18 local model, Epoch: 9, Loss: 1607994192.0114
+Client19 local model, Epoch: 9, Loss: 838663883.4014
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 18148861921.2800
+Client1 local model, Epoch: 9, Loss: 10389578570.6667
+Client2 local model, Epoch: 9, Loss: 13473851961.9048
+Client3 local model, Epoch: 9, Loss: 8349848270.7692
+Client4 local model, Epoch: 9, Loss: 15608596780.3077
+Client5 local model, Epoch: 9, Loss: 15291488322.6667
+Client6 local model, Epoch: 9, Loss: 13302007902.4762
+Client7 local model, Epoch: 9, Loss: 10907004726.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 39, Accuracy: 0.1009, ASR: 0.0000
+Global round: 40==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1447564823.4583
+Client9 local model, Epoch: 9, Loss: 755578046.0566
+Client10 local model, Epoch: 9, Loss: 1361168686.4231
+Client11 local model, Epoch: 9, Loss: 1121718905.3472
+Client12 local model, Epoch: 9, Loss: 1310817877.6274
+Client13 local model, Epoch: 9, Loss: 1397028061.5915
+Client14 local model, Epoch: 9, Loss: 1422108871.3281
+Client15 local model, Epoch: 9, Loss: 1038126797.0096
+Client16 local model, Epoch: 9, Loss: 1124873001.2198
+Client17 local model, Epoch: 9, Loss: 1784013088.7647
+Client18 local model, Epoch: 9, Loss: 1684546789.5966
+Client19 local model, Epoch: 9, Loss: 865234039.3718
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 18667444615.6800
+Client1 local model, Epoch: 9, Loss: 10784989365.3333
+Client2 local model, Epoch: 9, Loss: 13962205299.8095
+Client3 local model, Epoch: 9, Loss: 8669014289.2308
+Client4 local model, Epoch: 9, Loss: 16166159177.8462
+Client5 local model, Epoch: 9, Loss: 15841305144.0000
+Client6 local model, Epoch: 9, Loss: 13827766153.1429
+Client7 local model, Epoch: 9, Loss: 11325164912.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 40, Accuracy: 0.1009, ASR: 0.0000
+Global round: 41==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1504204811.6797
+Client9 local model, Epoch: 9, Loss: 776926595.8555
+Client10 local model, Epoch: 9, Loss: 1440223453.0481
+Client11 local model, Epoch: 9, Loss: 1156037709.0000
+Client12 local model, Epoch: 9, Loss: 1354038764.8245
+Client13 local model, Epoch: 9, Loss: 1459882501.8839
+Client14 local model, Epoch: 9, Loss: 1483096232.2526
+Client15 local model, Epoch: 9, Loss: 1086018705.1394
+Client16 local model, Epoch: 9, Loss: 1196711947.1976
+Client17 local model, Epoch: 9, Loss: 1876232500.6471
+Client18 local model, Epoch: 9, Loss: 1768690294.0341
+Client19 local model, Epoch: 9, Loss: 915474642.7171
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 19390005173.7600
+Client1 local model, Epoch: 9, Loss: 11184076901.3333
+Client2 local model, Epoch: 9, Loss: 14481023539.8095
+Client3 local model, Epoch: 9, Loss: 8986802318.7692
+Client4 local model, Epoch: 9, Loss: 16715098158.7692
+Client5 local model, Epoch: 9, Loss: 16386625496.0000
+Client6 local model, Epoch: 9, Loss: 14322265097.1429
+Client7 local model, Epoch: 9, Loss: 11802231508.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 41, Accuracy: 0.1009, ASR: 0.0000
+Global round: 42==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1549754932.5521
+Client9 local model, Epoch: 9, Loss: 830991744.3750
+Client10 local model, Epoch: 9, Loss: 1460268515.8846
+Client11 local model, Epoch: 9, Loss: 1199353912.8796
+Client12 local model, Epoch: 9, Loss: 1419846654.1707
+Client13 local model, Epoch: 9, Loss: 1513076714.8705
+Client14 local model, Epoch: 9, Loss: 1531853294.1276
+Client15 local model, Epoch: 9, Loss: 1128581745.9543
+Client16 local model, Epoch: 9, Loss: 1228774394.9143
+Client17 local model, Epoch: 9, Loss: 1955581323.9853
+Client18 local model, Epoch: 9, Loss: 1847417965.1818
+Client19 local model, Epoch: 9, Loss: 947223912.6731
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 20088859955.2000
+Client1 local model, Epoch: 9, Loss: 11585507045.3333
+Client2 local model, Epoch: 9, Loss: 14977248841.1429
+Client3 local model, Epoch: 9, Loss: 9311333056.0000
+Client4 local model, Epoch: 9, Loss: 17291792352.0000
+Client5 local model, Epoch: 9, Loss: 16958049632.0000
+Client6 local model, Epoch: 9, Loss: 14777298352.7619
+Client7 local model, Epoch: 9, Loss: 12175404064.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 42, Accuracy: 0.1009, ASR: 0.0000
+Global round: 43==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1606197081.3125
+Client9 local model, Epoch: 9, Loss: 846728003.9727
+Client10 local model, Epoch: 9, Loss: 1531405681.8846
+Client11 local model, Epoch: 9, Loss: 1256517089.9606
+Client12 local model, Epoch: 9, Loss: 1472217812.0697
+Client13 local model, Epoch: 9, Loss: 1564839748.0670
+Client14 local model, Epoch: 9, Loss: 1588373237.6901
+Client15 local model, Epoch: 9, Loss: 1165975947.6058
+Client16 local model, Epoch: 9, Loss: 1278548123.9360
+Client17 local model, Epoch: 9, Loss: 2021621038.4412
+Client18 local model, Epoch: 9, Loss: 1878049877.9460
+Client19 local model, Epoch: 9, Loss: 965070459.0721
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 20716886187.5200
+Client1 local model, Epoch: 9, Loss: 11989917109.3333
+Client2 local model, Epoch: 9, Loss: 15470781619.8095
+Client3 local model, Epoch: 9, Loss: 9632838737.2308
+Client4 local model, Epoch: 9, Loss: 17891529031.3846
+Client5 local model, Epoch: 9, Loss: 17522929013.3333
+Client6 local model, Epoch: 9, Loss: 15288808923.4286
+Client7 local model, Epoch: 9, Loss: 12566983952.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 43, Accuracy: 0.1009, ASR: 0.0000
+Global round: 44==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1660272522.9531
+Client9 local model, Epoch: 9, Loss: 902720583.5742
+Client10 local model, Epoch: 9, Loss: 1617993151.3750
+Client11 local model, Epoch: 9, Loss: 1319275463.4120
+Client12 local model, Epoch: 9, Loss: 1519575911.1418
+Client13 local model, Epoch: 9, Loss: 1633092997.9955
+Client14 local model, Epoch: 9, Loss: 1656442596.9245
+Client15 local model, Epoch: 9, Loss: 1202214098.1875
+Client16 local model, Epoch: 9, Loss: 1332020160.8508
+Client17 local model, Epoch: 9, Loss: 2057505464.1912
+Client18 local model, Epoch: 9, Loss: 1987754381.5966
+Client19 local model, Epoch: 9, Loss: 1014473085.0849
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 21458066792.9600
+Client1 local model, Epoch: 9, Loss: 12397694528.0000
+Client2 local model, Epoch: 9, Loss: 15994730206.4762
+Client3 local model, Epoch: 9, Loss: 9961565932.3077
+Client4 local model, Epoch: 9, Loss: 18445932283.0769
+Client5 local model, Epoch: 9, Loss: 18082751378.6667
+Client6 local model, Epoch: 9, Loss: 15821658435.0476
+Client7 local model, Epoch: 9, Loss: 13033118668.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 44, Accuracy: 0.1009, ASR: 0.0000
+Global round: 45==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1714448626.8307
+Client9 local model, Epoch: 9, Loss: 919602419.6172
+Client10 local model, Epoch: 9, Loss: 1664209042.8750
+Client11 local model, Epoch: 9, Loss: 1355837793.6991
+Client12 local model, Epoch: 9, Loss: 1579581940.0721
+Client13 local model, Epoch: 9, Loss: 1694839270.0179
+Client14 local model, Epoch: 9, Loss: 1698034253.9948
+Client15 local model, Epoch: 9, Loss: 1246362377.0024
+Client16 local model, Epoch: 9, Loss: 1362225793.2540
+Client17 local model, Epoch: 9, Loss: 2171018951.1765
+Client18 local model, Epoch: 9, Loss: 2056294831.0625
+Client19 local model, Epoch: 9, Loss: 1059128173.5721
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 22086490176.0000
+Client1 local model, Epoch: 9, Loss: 12807876154.6667
+Client2 local model, Epoch: 9, Loss: 16488929322.6667
+Client3 local model, Epoch: 9, Loss: 10292591404.3077
+Client4 local model, Epoch: 9, Loss: 19056420017.2308
+Client5 local model, Epoch: 9, Loss: 18666413882.6667
+Client6 local model, Epoch: 9, Loss: 16306735335.6190
+Client7 local model, Epoch: 9, Loss: 13441129012.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 45, Accuracy: 0.1009, ASR: 0.0000
+Global round: 46==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1770394132.9219
+Client9 local model, Epoch: 9, Loss: 954489284.6719
+Client10 local model, Epoch: 9, Loss: 1684855917.7644
+Client11 local model, Epoch: 9, Loss: 1406258555.5880
+Client12 local model, Epoch: 9, Loss: 1627344683.9567
+Client13 local model, Epoch: 9, Loss: 1749714134.6116
+Client14 local model, Epoch: 9, Loss: 1780787502.4141
+Client15 local model, Epoch: 9, Loss: 1319331769.7452
+Client16 local model, Epoch: 9, Loss: 1431822223.2903
+Client17 local model, Epoch: 9, Loss: 2203128644.3529
+Client18 local model, Epoch: 9, Loss: 2105105852.3125
+Client19 local model, Epoch: 9, Loss: 1063831441.5401
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 22758597312.0000
+Client1 local model, Epoch: 9, Loss: 13222405744.0000
+Client2 local model, Epoch: 9, Loss: 17016103137.5238
+Client3 local model, Epoch: 9, Loss: 10624080369.2308
+Client4 local model, Epoch: 9, Loss: 19621330828.3077
+Client5 local model, Epoch: 9, Loss: 19247130210.6667
+Client6 local model, Epoch: 9, Loss: 16820437540.5714
+Client7 local model, Epoch: 9, Loss: 13819201416.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 46, Accuracy: 0.1009, ASR: 0.0000
+Global round: 47==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1848414034.5990
+Client9 local model, Epoch: 9, Loss: 1009706254.4453
+Client10 local model, Epoch: 9, Loss: 1787928109.0865
+Client11 local model, Epoch: 9, Loss: 1447110683.0185
+Client12 local model, Epoch: 9, Loss: 1696447156.0144
+Client13 local model, Epoch: 9, Loss: 1797243088.1183
+Client14 local model, Epoch: 9, Loss: 1826088893.8828
+Client15 local model, Epoch: 9, Loss: 1359175624.1611
+Client16 local model, Epoch: 9, Loss: 1484791679.6794
+Client17 local model, Epoch: 9, Loss: 2321620697.6176
+Client18 local model, Epoch: 9, Loss: 2188940641.9432
+Client19 local model, Epoch: 9, Loss: 1125899030.4615
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 23476689697.2800
+Client1 local model, Epoch: 9, Loss: 13637574672.0000
+Client2 local model, Epoch: 9, Loss: 17548403443.8095
+Client3 local model, Epoch: 9, Loss: 10958398035.6923
+Client4 local model, Epoch: 9, Loss: 20216229238.1538
+Client5 local model, Epoch: 9, Loss: 19839894570.6667
+Client6 local model, Epoch: 9, Loss: 17325890800.7619
+Client7 local model, Epoch: 9, Loss: 14254900764.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 47, Accuracy: 0.1009, ASR: 0.0000
+Global round: 48==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1940660967.0521
+Client9 local model, Epoch: 9, Loss: 1021508143.0840
+Client10 local model, Epoch: 9, Loss: 1840577296.4663
+Client11 local model, Epoch: 9, Loss: 1503388256.6574
+Client12 local model, Epoch: 9, Loss: 1753909335.9712
+Client13 local model, Epoch: 9, Loss: 1867953070.4085
+Client14 local model, Epoch: 9, Loss: 1896393980.0938
+Client15 local model, Epoch: 9, Loss: 1398075199.6442
+Client16 local model, Epoch: 9, Loss: 1518279377.9738
+Client17 local model, Epoch: 9, Loss: 2379951280.1765
+Client18 local model, Epoch: 9, Loss: 2277928139.1932
+Client19 local model, Epoch: 9, Loss: 1157095987.4776
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 24162850460.1600
+Client1 local model, Epoch: 9, Loss: 14051527082.6667
+Client2 local model, Epoch: 9, Loss: 18054047573.3333
+Client3 local model, Epoch: 9, Loss: 11286388878.7692
+Client4 local model, Epoch: 9, Loss: 20807922880.0000
+Client5 local model, Epoch: 9, Loss: 20414050589.3333
+Client6 local model, Epoch: 9, Loss: 17816964559.2381
+Client7 local model, Epoch: 9, Loss: 14712511148.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 48, Accuracy: 0.1009, ASR: 0.0000
+Global round: 49==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1979194478.4948
+Client9 local model, Epoch: 9, Loss: 1056238494.6523
+Client10 local model, Epoch: 9, Loss: 1911281173.3750
+Client11 local model, Epoch: 9, Loss: 1549420960.3889
+Client12 local model, Epoch: 9, Loss: 1810767274.3486
+Client13 local model, Epoch: 9, Loss: 1920779191.3237
+Client14 local model, Epoch: 9, Loss: 1956572878.6484
+Client15 local model, Epoch: 9, Loss: 1460950976.4471
+Client16 local model, Epoch: 9, Loss: 1581646056.8710
+Client17 local model, Epoch: 9, Loss: 2448079313.0294
+Client18 local model, Epoch: 9, Loss: 2316966257.4119
+Client19 local model, Epoch: 9, Loss: 1201921284.8646
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 24833522383.3600
+Client1 local model, Epoch: 9, Loss: 14467025888.0000
+Client2 local model, Epoch: 9, Loss: 18574476537.9048
+Client3 local model, Epoch: 9, Loss: 11619977585.2308
+Client4 local model, Epoch: 9, Loss: 21371784049.2308
+Client5 local model, Epoch: 9, Loss: 21000044200.0000
+Client6 local model, Epoch: 9, Loss: 18358973808.7619
+Client7 local model, Epoch: 9, Loss: 15141107580.0000
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  20
+aggregated_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.051383333333333336, 0.025366666666666666, 0.043833333333333335, 0.027633333333333333, 0.05411666666666667, 0.04955, 0.04303333333333333, 0.03225, 0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.051133333333333336, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 49, Accuracy: 0.1009, ASR: 0.0000
+Dataset Name: MNIST
+Attack Method: SignFlipping
+Defense Method: FLUD
+IID: False
+Alpha: 1
+Given Size: 4096
+backdoor attack:  False
+poisoned data portion in each client:  0.5
+target label:  0
+comprised_client_idx:  range(0, 20)
+read_dir:  ~/processed_data/MNIST_iid-False_alpha-1_numclients-20_backdoor-False_poisonedclientsportion-0.4_poisoneddataportion-0.5/
+Number of GPUs available: 4
+Using GPU: 2
+global_model:  MLP(
+  (fc1): Linear(in_features=784, out_features=128, bias=True)
+  (fc2): Linear(in_features=128, out_features=256, bias=True)
+  (fc3): Linear(in_features=256, out_features=10, bias=True)
+)
+Number of trainable parameters:  136074
+clients_images_list:  20
+clients_images_list[0]:  (3083, 1, 28, 28) <class 'numpy.ndarray'>
+clients_images_list[0][0] (1, 28, 28) <class 'numpy.ndarray'>
+Client0 dataset size: 3083
+Client1 dataset size: 1522
+Client2 dataset size: 2630
+Client3 dataset size: 1658
+Client4 dataset size: 3247
+Client5 dataset size: 2973
+Client6 dataset size: 2582
+Client7 dataset size: 1935
+Client8 dataset size: 3001
+Client9 dataset size: 4093
+Client10 dataset size: 3290
+Client11 dataset size: 3361
+Client12 dataset size: 3247
+Client13 dataset size: 3529
+Client14 dataset size: 3068
+Client15 dataset size: 3231
+Client16 dataset size: 3845
+Client17 dataset size: 2090
+Client18 dataset size: 2712
+Client19 dataset size: 4903
+Test acc dataset size:  10000
+Test asr dataset size:  9020
+save_reslult_dir:  /scratch/wenjie/results/MNIST_iid-False_alpha-1_numclients-20_attack-SignFlipping_defense-FLUD_20240524125535ca89/
+Global round: 0==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 2.3962
+Client9 local model, Epoch: 9, Loss: 1.8550
+Client10 local model, Epoch: 9, Loss: 2.2291
+Client11 local model, Epoch: 9, Loss: 1.7344
+Client12 local model, Epoch: 9, Loss: 1.8054
+Client13 local model, Epoch: 9, Loss: 2.2891
+Client14 local model, Epoch: 9, Loss: 1.7467
+Client15 local model, Epoch: 9, Loss: 2.3403
+Client16 local model, Epoch: 9, Loss: 1.8420
+Client17 local model, Epoch: 9, Loss: 2.7818
+Client18 local model, Epoch: 9, Loss: 2.4606
+Client19 local model, Epoch: 9, Loss: 1.6082
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 113750814.7616
+Client1 local model, Epoch: 9, Loss: 9870606.3862
+Client2 local model, Epoch: 9, Loss: 61757590.6370
+Client3 local model, Epoch: 9, Loss: 12280761.4021
+Client4 local model, Epoch: 9, Loss: 116940005.4340
+Client5 local model, Epoch: 9, Loss: 88065803.6868
+Client6 local model, Epoch: 9, Loss: 52431185.9913
+Client7 local model, Epoch: 9, Loss: 21776296.8737
+defense_method:  FLUD
+本轮被聚合的客户端数量:  10
+aggregated_clients_index:  [8, 10, 11, 12, 13, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.05001666666666667, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 0, Accuracy: 0.9307, ASR: 0.0083
+Global round: 1==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 1.1224
+Client9 local model, Epoch: 9, Loss: 0.9251
+Client10 local model, Epoch: 9, Loss: 0.8676
+Client11 local model, Epoch: 9, Loss: 0.5989
+Client12 local model, Epoch: 9, Loss: 0.6653
+Client13 local model, Epoch: 9, Loss: 0.7542
+Client14 local model, Epoch: 9, Loss: 0.5587
+Client15 local model, Epoch: 9, Loss: 1.0230
+Client16 local model, Epoch: 9, Loss: 0.7987
+Client17 local model, Epoch: 9, Loss: 1.1373
+Client18 local model, Epoch: 9, Loss: 0.9114
+Client19 local model, Epoch: 9, Loss: 0.7883
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 132605016.9754
+Client1 local model, Epoch: 9, Loss: 13505593.9960
+Client2 local model, Epoch: 9, Loss: 73835740.7851
+Client3 local model, Epoch: 9, Loss: 16407251.1044
+Client4 local model, Epoch: 9, Loss: 136032645.5478
+Client5 local model, Epoch: 9, Loss: 102507310.1981
+Client6 local model, Epoch: 9, Loss: 63588162.7075
+Client7 local model, Epoch: 9, Loss: 27903057.0787
+defense_method:  FLUD
+本轮被聚合的客户端数量:  10
+aggregated_clients_index:  [8, 9, 10, 11, 13, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05881666666666667, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 1, Accuracy: 0.9503, ASR: 0.0057
+Global round: 2==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 0.5026
+Client9 local model, Epoch: 9, Loss: 0.5682
+Client10 local model, Epoch: 9, Loss: 0.4482
+Client11 local model, Epoch: 9, Loss: 0.3032
+Client12 local model, Epoch: 9, Loss: 0.3721
+Client13 local model, Epoch: 9, Loss: 0.4314
+Client14 local model, Epoch: 9, Loss: 0.2836
+Client15 local model, Epoch: 9, Loss: 0.4838
+Client16 local model, Epoch: 9, Loss: 0.3931
+Client17 local model, Epoch: 9, Loss: 0.4979
+Client18 local model, Epoch: 9, Loss: 0.4105
+Client19 local model, Epoch: 9, Loss: 0.3941
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 131552266.1025
+Client1 local model, Epoch: 9, Loss: 13514550.4451
+Client2 local model, Epoch: 9, Loss: 73841420.4285
+Client3 local model, Epoch: 9, Loss: 16423414.9156
+Client4 local model, Epoch: 9, Loss: 136359153.5255
+Client5 local model, Epoch: 9, Loss: 102694219.6653
+Client6 local model, Epoch: 9, Loss: 63814682.1766
+Client7 local model, Epoch: 9, Loss: 27875202.5070
+defense_method:  FLUD
+本轮被聚合的客户端数量:  10
+aggregated_clients_index:  [8, 10, 11, 12, 13, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.05001666666666667, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 2, Accuracy: 0.9627, ASR: 0.0050
+Global round: 3==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 0.4365
+Client9 local model, Epoch: 9, Loss: 0.4503
+Client10 local model, Epoch: 9, Loss: 0.3736
+Client11 local model, Epoch: 9, Loss: 0.2196
+Client12 local model, Epoch: 9, Loss: 0.2718
+Client13 local model, Epoch: 9, Loss: 0.2943
+Client14 local model, Epoch: 9, Loss: 0.2387
+Client15 local model, Epoch: 9, Loss: 0.4063
+Client16 local model, Epoch: 9, Loss: 0.3085
+Client17 local model, Epoch: 9, Loss: 0.4825
+Client18 local model, Epoch: 9, Loss: 0.3688
+Client19 local model, Epoch: 9, Loss: 0.3257
+attack method:  SignFlipping
+Client0 local model, Epoch: 9, Loss: 131798820.7356
+Client1 local model, Epoch: 9, Loss: 13504893.3805
+Client2 local model, Epoch: 9, Loss: 74041502.4489
+Client3 local model, Epoch: 9, Loss: 16551642.3885
+Client4 local model, Epoch: 9, Loss: 136188042.4851
+Client5 local model, Epoch: 9, Loss: 102486740.5306
+Client6 local model, Epoch: 9, Loss: 63671049.7462
+Client7 local model, Epoch: 9, Loss: 27947887.8100
+defense_method:  FLUD
+本轮被聚合的客户端数量:  11
+aggregated_clients_index:  [8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19]
+aggregated_clients_weights:  [0.05001666666666667, 0.06821666666666666, 0.05483333333333333, 0.056016666666666666, 0.05411666666666667, 0.05881666666666667, 0.05385, 0.06408333333333334, 0.034833333333333334, 0.0452, 0.08171666666666667]
+Global round: 3, Accuracy: 0.9671, ASR: 0.0043
+Global round: 4==========================
+malicious_clients_index:  [0, 1, 2, 3, 4, 5, 6, 7]
+benign_clients_index:  [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+Client8 local model, Epoch: 9, Loss: 0.2743
+Client9 local model, Epoch: 9, Loss: 0.4219
+Client10 local model, Epoch: 9, Loss: 0.3544
+Client11 local model, Epoch: 9, Loss: 0.2011
+Client12 local model, Epoch: 9, Loss: 0.2934
+Client13 local model, Epoch: 9, Loss: 0.2679
+Client14 local model, Epoch: 9, Loss: 0.2018
