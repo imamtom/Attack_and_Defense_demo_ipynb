@@ -213,7 +213,7 @@ def train_and_get_local_update_of_single_client(client_index, local_model, local
             local_optimizer.zero_grad()
             loss.backward()
             # 裁剪梯度
-            torch.nn.utils.clip_grad_norm_(local_model.parameters(), 1)
+            # torch.nn.utils.clip_grad_norm_(local_model.parameters(), 1)
             # 更新参数
             local_optimizer.step()
             train_loss += loss.item()
@@ -248,7 +248,7 @@ def train_and_get_local_update_of_attack_LabelFlipping(client_index, local_model
             local_optimizer.zero_grad()
             loss.backward()
             # 裁剪梯度
-            torch.nn.utils.clip_grad_norm_(local_model.parameters(), 1)
+            # torch.nn.utils.clip_grad_norm_(local_model.parameters(), 1)
             # 更新参数
             local_optimizer.step()
             train_loss += loss.item()
