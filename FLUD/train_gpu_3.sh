@@ -1,0 +1,1 @@
+python main.py --dataset ImageNet12 --attack_method NoAttack --defense_method FedAvg --iid True --local_learning_rate 0.1 --batch_size 128 --local_epochs 1 --alpha 0.1 --given_size 4096 --gpu_id 3

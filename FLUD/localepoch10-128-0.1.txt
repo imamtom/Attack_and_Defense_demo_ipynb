@@ -1,0 +1,271 @@
+Number of trainable parameters:  2239244
+Global round: 0==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 20.8264
+Client5 local model, Epoch: 9, Loss: 21.7704
+Client6 local model, Epoch: 9, Loss: 21.4688
+Client7 local model, Epoch: 9, Loss: 21.3982
+Client8 local model, Epoch: 9, Loss: 21.2226
+Client9 local model, Epoch: 9, Loss: 21.0723
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 21.2672
+Client0 local model, Test Acc: 0.2692
+Client1 local model, Epoch: 9, Loss: 21.4681
+Client2 local model, Epoch: 9, Loss: 21.5464
+Client3 local model, Epoch: 9, Loss: 21.0023
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 0, Accuracy: 0.0833, ASR: 0.0000
+Global round: 1==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 17.5044
+Client5 local model, Epoch: 9, Loss: 18.3973
+Client6 local model, Epoch: 9, Loss: 17.8569
+Client7 local model, Epoch: 9, Loss: 17.7464
+Client8 local model, Epoch: 9, Loss: 17.9210
+Client9 local model, Epoch: 9, Loss: 16.9584
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 17.5195
+Client0 local model, Test Acc: 0.2462
+Client1 local model, Epoch: 9, Loss: 18.0222
+Client2 local model, Epoch: 9, Loss: 17.8506
+Client3 local model, Epoch: 9, Loss: 17.4309
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 1, Accuracy: 0.0846, ASR: 0.0000
+Global round: 2==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 13.8587
+Client5 local model, Epoch: 9, Loss: 14.5044
+Client6 local model, Epoch: 9, Loss: 13.9985
+Client7 local model, Epoch: 9, Loss: 14.7411
+Client8 local model, Epoch: 9, Loss: 14.5794
+Client9 local model, Epoch: 9, Loss: 13.6606
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 13.8636
+Client0 local model, Test Acc: 0.3561
+Client1 local model, Epoch: 9, Loss: 13.8166
+Client2 local model, Epoch: 9, Loss: 14.0064
+Client3 local model, Epoch: 9, Loss: 13.5654
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 2, Accuracy: 0.0968, ASR: 0.0000
+Global round: 3==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 10.5025
+Client5 local model, Epoch: 9, Loss: 10.3646
+Client6 local model, Epoch: 9, Loss: 10.8400
+Client7 local model, Epoch: 9, Loss: 10.6289
+Client8 local model, Epoch: 9, Loss: 10.1293
+Client9 local model, Epoch: 9, Loss: 9.9298
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 10.2370
+Client0 local model, Test Acc: 0.4494
+Client1 local model, Epoch: 9, Loss: 10.0404
+Client2 local model, Epoch: 9, Loss: 10.5461
+Client3 local model, Epoch: 9, Loss: 9.6201
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 3, Accuracy: 0.2103, ASR: 0.0234
+Global round: 4==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 7.0714
+Client5 local model, Epoch: 9, Loss: 6.7875
+Client6 local model, Epoch: 9, Loss: 6.7728
+Client7 local model, Epoch: 9, Loss: 6.8052
+Client8 local model, Epoch: 9, Loss: 6.5838
+Client9 local model, Epoch: 9, Loss: 6.5300
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 6.5178
+Client0 local model, Test Acc: 0.5712
+Client1 local model, Epoch: 9, Loss: 6.5819
+Client2 local model, Epoch: 9, Loss: 6.8644
+Client3 local model, Epoch: 9, Loss: 6.3305
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 4, Accuracy: 0.6590, ASR: 0.0885
+Global round: 5==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 4.7921
+Client5 local model, Epoch: 9, Loss: 4.9077
+Client6 local model, Epoch: 9, Loss: 4.6197
+Client7 local model, Epoch: 9, Loss: 4.5372
+Client8 local model, Epoch: 9, Loss: 4.2842
+/scratch/wenjie/anaconda3/envs/revision/bin/python /scratch/wenjie/flud/FLUD/main.py
+Client9 local model, Epoch: 9, Loss: 4.2052
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 4.3211
+Client0 local model, Test Acc: 0.5766
+Client1 local model, Epoch: 9, Loss: 4.4511
+Client2 local model, Epoch: 9, Loss: 4.4719
+Client3 local model, Epoch: 9, Loss: 4.2340
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 5, Accuracy: 0.7564, ASR: 0.0538
+Global round: 6==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 3.5368
+Client5 local model, Epoch: 9, Loss: 3.5437
+Client6 local model, Epoch: 9, Loss: 3.3258
+Client7 local model, Epoch: 9, Loss: 3.1834
+Client8 local model, Epoch: 9, Loss: 3.2236
+Client9 local model, Epoch: 9, Loss: 3.3399
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 3.2362
+Client0 local model, Test Acc: 0.6372
+Client1 local model, Epoch: 9, Loss: 3.3606
+Client2 local model, Epoch: 9, Loss: 3.4078
+Client3 local model, Epoch: 9, Loss: 3.0686
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 6, Accuracy: 0.7779, ASR: 0.0490
+Global round: 7==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 2.9902
+Client5 local model, Epoch: 9, Loss: 2.9698
+Client6 local model, Epoch: 9, Loss: 2.6105
+Client7 local model, Epoch: 9, Loss: 2.6846
+Client8 local model, Epoch: 9, Loss: 2.6752
+Client9 local model, Epoch: 9, Loss: 2.6156
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 2.7495
+Client0 local model, Test Acc: 0.6167
+Client1 local model, Epoch: 9, Loss: 2.7572
+Client2 local model, Epoch: 9, Loss: 2.7624
+Client3 local model, Epoch: 9, Loss: 2.4873
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 7, Accuracy: 0.7878, ASR: 0.0483
+Global round: 8==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 2.4888
+Client5 local model, Epoch: 9, Loss: 2.2851
+Client6 local model, Epoch: 9, Loss: 2.2838
+Client7 local model, Epoch: 9, Loss: 2.4632
+Client8 local model, Epoch: 9, Loss: 2.2161
+Client9 local model, Epoch: 9, Loss: 2.2564
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 2.1431
+Client0 local model, Test Acc: 0.7054
+Client1 local model, Epoch: 9, Loss: 2.3488
+Client2 local model, Epoch: 9, Loss: 2.2260
+Client3 local model, Epoch: 9, Loss: 2.1796
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 8, Accuracy: 0.8196, ASR: 0.0196
+Global round: 9==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 2.1251
+Client5 local model, Epoch: 9, Loss: 2.0846
+Client6 local model, Epoch: 9, Loss: 1.9441
+Client7 local model, Epoch: 9, Loss: 2.0821
+Client8 local model, Epoch: 9, Loss: 1.8228
+Client9 local model, Epoch: 9, Loss: 1.7465
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 1.9329
+Client0 local model, Test Acc: 0.6074
+Client1 local model, Epoch: 9, Loss: 1.9181
+Client2 local model, Epoch: 9, Loss: 1.9180
+Client3 local model, Epoch: 9, Loss: 1.7938
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 9, Accuracy: 0.8343, ASR: 0.0283
+Global round: 10==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 1.6507
+Client5 local model, Epoch: 9, Loss: 1.8180
+Client6 local model, Epoch: 9, Loss: 1.6438
+Client7 local model, Epoch: 9, Loss: 1.8732
+Client8 local model, Epoch: 9, Loss: 1.6410
+Client9 local model, Epoch: 9, Loss: 1.7476
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 1.7204
+Client0 local model, Test Acc: 0.7212
+Client1 local model, Epoch: 9, Loss: 1.8135
+Client2 local model, Epoch: 9, Loss: 1.5558
+Client3 local model, Epoch: 9, Loss: 1.5526
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 10, Accuracy: 0.8375, ASR: 0.0280
+Global round: 11==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 1.5789
+Client5 local model, Epoch: 9, Loss: 1.6270
+Client6 local model, Epoch: 9, Loss: 1.5078
+Client7 local model, Epoch: 9, Loss: 1.5542
+Client8 local model, Epoch: 9, Loss: 1.4601
+Client9 local model, Epoch: 9, Loss: 1.5104
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 1.5032
+Client0 local model, Test Acc: 0.7212
+Client1 local model, Epoch: 9, Loss: 1.5127
+Client2 local model, Epoch: 9, Loss: 1.4081
+Client3 local model, Epoch: 9, Loss: 1.4699
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 11, Accuracy: 0.8343, ASR: 0.0283
+Global round: 12==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 1.4526
+Client5 local model, Epoch: 9, Loss: 1.4282
+Client6 local model, Epoch: 9, Loss: 1.3641
+Client7 local model, Epoch: 9, Loss: 1.4251
+Client8 local model, Epoch: 9, Loss: 1.2818
+Client9 local model, Epoch: 9, Loss: 1.3915
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 1.3016
+Client0 local model, Test Acc: 0.7401
+Client1 local model, Epoch: 9, Loss: 1.3396
+Client2 local model, Epoch: 9, Loss: 1.3445
+Client3 local model, Epoch: 9, Loss: 1.2701
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 12, Accuracy: 0.8391, ASR: 0.0273
+Global round: 13==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
+Client4 local model, Epoch: 9, Loss: 1.3728
+Client5 local model, Epoch: 9, Loss: 1.3639
+Client6 local model, Epoch: 9, Loss: 1.1433
+Client7 local model, Epoch: 9, Loss: 1.3218
+Client8 local model, Epoch: 9, Loss: 1.2063
+Client9 local model, Epoch: 9, Loss: 1.2976
+attack method:  NoAttack
+Client0 local model, Epoch: 9, Loss: 1.2443
+Client0 local model, Test Acc: 0.7436
+Client1 local model, Epoch: 9, Loss: 1.2731
+Client2 local model, Epoch: 9, Loss: 1.2643
+Client3 local model, Epoch: 9, Loss: 1.0751
+benign_update_length:  2273356
+defense_method:  FedAvg
+本轮被聚合的客户端数量:  10
+Global round: 13, Accuracy: 0.8391, ASR: 0.0273
+Global round: 14==========================
+malicious_clients_index:  [0, 1, 2, 3]
+benign_clients_index:  [4, 5, 6, 7, 8, 9]
