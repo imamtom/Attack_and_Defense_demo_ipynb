@@ -1,1 +1,2 @@
-python main.py --dataset ImageNet12 --attack_method Backdoor --defense_method FedAvg --iid True --local_learning_rate 0.1 --batch_size 128 --local_epochs 2 --alpha 0.1 --given_size 4096 --gpu_id 2
+python main.py --dataset ImageNet12 --attack_method SignFlipping --defense_method MaxPoolSample --iid True --local_learning_rate 0.1 --batch_size 128 --local_epochs 3 --alpha 1 --given_size 4096 --gpu_id 3
+python main.py --dataset ImageNet12 --attack_method SignFlipping --defense_method AlignSample --iid True --local_learning_rate 0.1 --batch_size 128 --local_epochs 3 --alpha 1 --given_size 4096 --gpu_id 3

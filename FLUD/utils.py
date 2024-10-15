@@ -3,7 +3,9 @@ import random
 import numpy as np
 import os
 import torch.nn as nn
-
+from typing import List
+import copy
+from sklearn.cluster import AgglomerativeClustering
 
 # 给定参数, 返回保存结果的目录
 def get_save_results_dir(dataset_name, iid, alpha, num_clients, attack_method, defense_method):
@@ -126,22 +128,23 @@ def maxpool_of_sliding_window(vector, kernel_size):
     # reshape, 使得vector的长度是kernel_size的整数倍
     vector = vector.view(1, 1, h, w)
 
-    y = torch.nn.functional.max_pool2d(input, kernel_size, stride=None, padding=0, dilation=1, ceil_mode=True, return_indices=False)
+    y = torch.nn.functional.max_pool2d(vector, kernel_size, stride=None, padding=0, dilation=1, ceil_mode=True, return_indices=False)
     # 然后将y转为1维张量
     y = y.view(-1)
     return y
 
-# layer_wise_align: 这里将每个卷积层算出来一个max,每个矩阵算出来一个max. 返回一个vector
-def layer_wise_align(vector):
-    # vector是一个model_update, 里面有很多层的参数
-    layers_tensor = [torch.sign(layer_tensor)*torch.max(torch.abs(layer_tensor)) for layer_tensor in [vector[k] for k in vector]]
-    # 将他们拼接为一个tensor
-    for i in range(len(layers_tensor)):
-        # print('layers_tensor[i]: ', layers_tensor[i].shape)
-        layers_tensor[i] = layers_tensor[i].flatten()
-    layers_tensor = torch.cat(layers_tensor, dim=0)
-    # print('layers_tensor: ', layers_tensor.shape)
-    return layers_tensor    
+# layer_wise_align_on_vector: 每一层算出max 以及 sign. 返回一个vector
+def layer_wise_align_on_vector(vector, name_shapes_to_aggregate):
+    start = 0
+    for name, shape in name_shapes_to_aggregate.items():
+        # 计算vector中对应位置的max
+        max_value = torch.max(torch.abs(vector[start:start+np.prod(shape)]))
+        # 计算vector中对应位置的sign
+        sign = torch.sign(vector[start:start+np.prod(shape)])
+
+        vector[start:start+np.prod(shape)] = sign * max_value
+        start += np.prod(shape)
+    return vector
 
 
 
@@ -151,14 +154,25 @@ def update_update_convert_to_vector(model_update):
     return torch.cat([model_update[k].flatten() for k in model_update])
 
 # 计算向量之间的两两欧氏距离
-def compute_euclid_dis(vectors_list):
+def compute_euclid_dis(vectors_list: List[torch.Tensor]):
     num = len(vectors_list)
     dis_max = np.zeros((num, num))
     for i in range(num):
         for j in range(i + 1, num):
-            dis_max[i, j] =torch.sqrt(torch.sum((vectors_list[i] - vectors_list[j]) ** 2))
+            dis_max[i, j] = torch.sqrt(torch.sum((vectors_list[i] - vectors_list[j]) ** 2))
             dis_max[j, i] = dis_max[i, j]
     return dis_max
+
+# 计算向量之间的两两cosine距离
+def compute_cosine_dis(vectors_list: List[torch.Tensor]):
+    num = len(vectors_list)
+    dis_max = np.zeros((num, num))
+    for i in range(num):
+        for j in range(i + 1, num):
+            dis_max[i, j] = torch.nn.functional.cosine_similarity(vectors_list[i], vectors_list[j], dim=0)
+            dis_max[j, i] = dis_max[i, j]
+    return dis_max
+
 
 # 距离矩阵转为投票向量
 def votes_by_dismatrix(dis_matrix):
@@ -172,40 +186,59 @@ def votes_by_dismatrix(dis_matrix):
     column_sums = np.sum(result_matrix, axis=0)
     return column_sums
 
-def extract_state_dict(model):
+def extract_state_dict(model, layers_to_aggregate):
     """
-    1. 输入模型, 提取模型的state_dict，如果存在则排除num_batches_tracked
+    1. 输入模型, 提取模型中的layers_to_aggregate的state 
     
     Args:
         model (torch.nn.Module): 输入的模型
-    
-    Returns:
-        dict: 不包含num_batches_tracked的state_dict
+        layers_to_aggregate (list): 要提取的层的名字
     """
-    return {name: param.clone().detach() for name, param in model.state_dict().items()
-            if 'num_batches_tracked' not in name}
+    state_dict = model.state_dict()
+    state_dict_to_aggregate = {}
+    for name, param in state_dict.items():
+        if name in layers_to_aggregate:
+            state_dict_to_aggregate[name] = param
+    return state_dict_to_aggregate
 
-def synchronization_local_model(local_model, global_state_dict):
+def synchronization_local_model(local_model, global_state_dict, layers_to_aggregate):
     """
-    2. 使用全局模型的state_dict更新本地模型
-    
+    使用全局模型的state_dict更新本地模型的特定参数。
+
     Args:
         local_model (torch.nn.Module): 本地模型
         global_state_dict (dict): 全局模型的state_dict
+        layers_to_aggregate (list of str): 要更新的层名列表
     """
+    # 获取本地模型的 state_dict
     local_state_dict = local_model.state_dict()
-    
-    for name, param in global_state_dict.items():
-        if 'num_batches_tracked' not in name:
-            local_state_dict[name].copy_(param)
+
+    # 更新指定的层
+    for name in global_state_dict:
+        if name in layers_to_aggregate:
+            local_state_dict[name] = global_state_dict[name]
+
+    # 加载更新后的参数
     local_model.load_state_dict(local_state_dict)
-    return local_model  
+
+    return local_model
+
+
+def get_model_updates(initial_model, updated_model, layers_to_aggregate):
+    updates = {}
+    for name, param in updated_model.state_dict().items():
+        if name in layers_to_aggregate:
+            initial_param = initial_model.state_dict()[name]
+            updates[name] = param - initial_param
+    return updates
+
 
 # 给定一个state_dict, 提取其中的shape
-def extract_shapes_from_state_dict(state_dict):
+def extract_shapes_from_state_dict(state_dict, layers_to_aggregate):
     shape_dict = {}
     for name, param in state_dict.items():
-        shape_dict[name] = param.shape
+        if name in layers_to_aggregate:
+            shape_dict[name] = param.shape
     return shape_dict
 
 # 给定一个一维向量, 以及一个shape_dict, 将这个向量转为state_dict
@@ -219,14 +252,14 @@ def vector_to_state_dict(vector, shape_dict, benign_update_length_):
         start += length
     return state_dict
 
-# 给定所有digest, 被投票选出的客户端的index
+# 给定所有digest, 被投票选出的客户端的index...
 def defense_vote_for_clients(all_digests_list):
     half_clients = len(all_digests_list) // 2
     # 计算欧氏距离
     distance_matrix = compute_euclid_dis(all_digests_list)
-    # 投票
+    # 投票, 通过找到前10小的距离的index, 然后投票
     votes = votes_by_dismatrix(distance_matrix)
-    # 对votes中小于10的元素, 用0代替
+    # 对收到票数小于10的元素, 用0代替
     votes[votes < half_clients] = 0
     # 获取那些非0 的元素的index, 并转为list
     non_zero_clients_index = list(np.nonzero(votes)[0])
@@ -237,3 +270,65 @@ def defense_vote_for_clients(all_digests_list):
 # 传入模型, 返回模型的参数数量
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+def _mean(inputs: List[torch.Tensor]):
+    inputs_tensor = torch.stack(inputs, dim=0)
+    return inputs_tensor.mean(dim=0)
+
+
+def _median(inputs: List[torch.Tensor]):
+    inputs_tensor = torch.stack(inputs, dim=0)
+    values_upper, _ = inputs_tensor.median(dim=0)
+    values_lower, _ = (-inputs_tensor).median(dim=0)
+    return (values_upper - values_lower) / 2
+
+# 定义 _weighted_mean 函数
+def _weighted_mean(inputs: List[torch.Tensor], weights: torch.Tensor):
+    """
+    计算加权平均值
+    """
+    # inputs 是一个张量列表，每个张量都是一维的, 形状相同
+    inputs_tensor = torch.stack(inputs, dim=0)
+    weights_tensor = weights.view(-1, 1)
+    return torch.sum(inputs_tensor * weights_tensor, dim=0)
+
+def _std(inputs: List[torch.Tensor]):
+    inputs_tensor = torch.stack(inputs, dim=0)
+    return inputs_tensor.std(dim=0)
+
+# 聚类
+def _AHC_for_vectors(dis_max):
+    clustering = AgglomerativeClustering(
+        metric="precomputed", linkage="single", n_clusters=2
+    )
+    clustering.fit(dis_max)
+
+    flag = 1 if np.sum(clustering.labels_) > len(dis_max) // 2 else 0
+    selected_idxs = [
+        idx for idx, label in enumerate(clustering.labels_) if label == flag
+    ]
+    return selected_idxs
+
+# OPTICS聚类
+def _OPTICS_for_vectors(dis_max):
+    from sklearn.cluster import OPTICS
+
+    num_clients = len(dis_max)
+    # ceil(num_clients * 0.5) 为最小样本数
+    k_value = int(np.ceil(num_clients * 0.5))
+    # 找到距离矩阵中每行的第k_value-th ranked distance
+    distances = np.sort(dis_max, axis=1)[:, k_value]
+    # 找到中值
+    median_distance = np.median(distances)
+
+    clustering = OPTICS(metric="precomputed", min_samples=k_value, eps=median_distance, cluster_method="dbscan")
+    clustering.fit(dis_max)
+    # 找到最大的cluster中
+    # 过滤掉聚类中的噪声点 (-1) 
+    valid_labels = clustering.labels_[clustering.labels_ >= 0]
+    # 找到最大的cluster
+    largest_cluster_label = np.argmax(np.bincount(valid_labels))
+
+    selected_idxs = np.where(clustering.labels_ == largest_cluster_label)[0]
+    return selected_idxs
+

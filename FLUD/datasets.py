@@ -80,8 +80,6 @@ def get_transform(is_train=True):
     
     if is_train:
         transform = transforms.Compose([
-            transforms.Resize(256),  # 首先将图像调整为稍大的尺寸
-            transforms.CenterCrop(224),  # 然后从中心裁剪出所需的224x224大小
             transforms.RandomHorizontalFlip(),
             transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
             transforms.ToTensor(),
@@ -89,8 +87,6 @@ def get_transform(is_train=True):
         ])
     else:
         transform = transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
             transforms.ToTensor(),
             transforms.Normalize(mean, std)
         ])
@@ -105,8 +101,6 @@ def get_transform_add_trigger(trigger_img, is_train=True):
     
     if is_train:
         transform = transforms.Compose([
-            transforms.Resize(256),  # 首先将图像调整为稍大的尺寸
-            transforms.CenterCrop(224),  # 然后从中心裁剪出所需的224x224大小
             AddTrigger(trigger_img),
             transforms.RandomHorizontalFlip(),
             transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
@@ -115,8 +109,6 @@ def get_transform_add_trigger(trigger_img, is_train=True):
         ])
     else:
         transform = transforms.Compose([
-            transforms.Resize(256),
-            transforms.CenterCrop(224),
             transforms.ToTensor(),
             transforms.Normalize(mean, std)
         ])
@@ -127,7 +119,10 @@ def get_transform_add_trigger(trigger_img, is_train=True):
 class ImagenetteDataset(Dataset):
     def __init__(self, root_dir, transform=None):
         self.root_dir = root_dir
-        self.transform = transform
+        self.transform = transforms.Compose([
+            transforms.Resize(256),  # 首先将图像调整为稍大的尺寸
+            transforms.CenterCrop(224),  # 然后从中心裁剪出所需的224x224大小
+            ])
         self.classes = sorted(os.listdir(root_dir))
         self.class_to_idx = {cls_name: i for i, cls_name in enumerate(self.classes)} # class名字到class index的字典映射
         self.num_labels = len(self.classes)
@@ -258,7 +253,7 @@ class ImagenetteDataset(Dataset):
             images_of_client = []
             for lable_id in clientid_to_each_label_indices[client_id]:
                 for idx in clientid_to_each_label_indices[client_id][lable_id]:
-                    images_of_client.append(self.images[idx])
+                    images_of_client.append(self[idx])
             client_dataset_instances.append(ImagenetteDataset_per_client(client_id, images_of_client))
 
         return client_dataset_instances
@@ -268,12 +263,20 @@ class ImagenetteDataset(Dataset):
         if used_for not in ['test_acc', 'test_asr']:
             raise ValueError("used_for must be 'test_acc' or 'test_asr'")
         if used_for == 'test_acc':
-            return ImagenetteDataset_server(self.images, used_for=used_for, target_label=target_label)
+            # 所有的index都保留
+            images = []
+            for idx in range(len(self.images)):
+                images.append(self[idx])
+            return ImagenetteDataset_server(images, used_for=used_for)
         elif used_for == 'test_asr':
             if target_label == None:
                 raise ValueError("target_label must be specified when used_for is 'test_asr'")
             # 去掉label == target_label的数据, 剩余数据集的label均变为target_label
-            images = [(img_path, target_label) for img_path, label in self.images if label != target_label]
+            images = []
+            for idx in range(len(self.images)):
+                img, label = self[idx]
+                if label != target_label:
+                    images.append((img, target_label))
             return ImagenetteDataset_server(images, used_for=used_for, target_label=target_label)
 
 class ImagenetteDataset_server(Dataset):
@@ -284,7 +287,7 @@ class ImagenetteDataset_server(Dataset):
             raise ValueError("used_for must be 'test_acc' or 'test_asr'")
         self.used_for = used_for # 用来决定访问__getitem__时返回的数据是否带有trigger
         self.target_label = target_label
-        self.images = images
+        self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
         self.clear_transform = clear_transform
         self.trigger_transform = trigger_transform
         self.num_labels = len(set([label for _, label in self.images]))
@@ -293,8 +296,7 @@ class ImagenetteDataset_server(Dataset):
         return len(self.images)
 
     def __getitem__(self, idx):
-        img_path, label = self.images[idx]
-        image = Image.open(img_path).convert('RGB')
+        image, label = self.images[idx]
         if self.used_for == 'test_acc': 
             image = self.clear_transform(image)
         elif self.used_for == 'test_asr':
@@ -320,10 +322,10 @@ class ImagenetteDataset_server(Dataset):
 
     
 class ImagenetteDataset_per_client(Dataset):
-    # 传入 一个list images,每个元素是(image, label)的tuple
+    # 传入 一个list images,每个元素是(img, label)的tuple
     def __init__(self, client_id, images, clear_transform=None, trigger_transform=None):
         self.client_id = client_id
-        self.images = images
+        self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
         self.clear_transform = clear_transform
         self.trigger_transform = trigger_transform
         self.num_labels = len(set([label for _, label in self.images]))
@@ -334,16 +336,15 @@ class ImagenetteDataset_per_client(Dataset):
         return len(self.images)
 
     def __getitem__(self, idx):
-        img_path, label = self.images[idx]
-        image = Image.open(img_path).convert('RGB')
+        img, label = self.images[idx]
         if idx in self.trigger_img_indices:
             # 需要
-            image = self.trigger_transform(image)
+            img = self.trigger_transform(img)
             label = self.trigger_label_array[idx]
         else:
-            image = self.clear_transform(image)
+            img = self.clear_transform(img)
             label = label
-        return image, label
+        return img, label
     
     # 统计每个类别的数量
     def get_class_num(self):
