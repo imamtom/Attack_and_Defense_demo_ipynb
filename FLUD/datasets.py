@@ -368,8 +368,8 @@ class ImagenetteDataset_per_client(Dataset):
                 prior_poison_idx = np.concatenate((prior_poison_idx, label_to_label_indices[class_id]))
         
         # 如果非target_label的数据数量大于poison_data_portion比例的数据, 则从prior_poison_idx 随机选择poison_data_portion比例的数据
-        print("prior_poison_idx: ", len(prior_poison_idx))
-        print("num_poison_samples: ", num_poison_samples)
+        print("prior_poison_idx, i.e, numnber of samples with non-targeted labes: ", len(prior_poison_idx))
+        print("num_poison_samples, i.e, numnber of samples need to poison: ", num_poison_samples)
         if len(prior_poison_idx) >= int(num_poison_samples):
             poison_idx = np.random.choice(prior_poison_idx, int(num_poison_samples), replace=False)
         else:
