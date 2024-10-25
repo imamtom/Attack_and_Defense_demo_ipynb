@@ -1,1 +1,1 @@
-python main.py --dataset ImageNet12 --attack_method NoAttack --defense_method FedAvg --iid True --local_learning_rate 0.1 --batch_size 128 --local_epochs 1 --alpha 0.1 --given_size 4096 --gpu_id 3
+python main.py --dataset AgNews --attack_method IPM-01 --defense_method FedAvg --num_clients 20 --iid True --local_learning_rate 0.1 --global_rounds 30 --batch_size 128 --local_epochs 1 --alpha 0.1 --given_size 4096 --gpu_id 0

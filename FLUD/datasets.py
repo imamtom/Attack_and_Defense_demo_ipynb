@@ -6,118 +6,10 @@ import os
 import torch
 import random
 from matplotlib import pyplot as plt
-
-
-def create_rgb_trigger(pattern=None, size=9, colors=None):
-    """
-    创建一个size x size的RGB trigger，由3x3的彩色方块组成
-    
-    参数:
-    pattern : 一个长度为(size/3)^2的列表，指定每个3x3块的颜色索引
-               如果不指定，则随机生成
-    size : 触发器的大小，默认为9
-    colors : 一个包含两种RGB颜色的列表，默认为黑色和白色
-    
-    返回:
-    trigger : size x size x 3的PIL Image对象，RGB图案
-    """
-    block_num = (size // 3) ** 2
-    if pattern is None:
-        pattern = np.random.randint(0, 2, block_num)
-    elif len(pattern) != block_num:
-        raise ValueError(f"Pattern must be a list of length {block_num}")
-    
-    if colors is None:
-        colors = [(0, 0, 0), (255, 255, 255)]  # 默认黑白
-    
-    trigger = np.zeros((size, size, 3), dtype=np.uint8)
-    
-    for i in range(size // 3):
-        for j in range(size // 3):
-            color = colors[pattern[i * (size // 3) + j]]
-            trigger[i*3:i*3+3, j*3:j*3+3] = color
-    
-    return Image.fromarray(trigger, mode='RGB')
-
-class AddTrigger(object):
-    def __init__(self, trigger_img):
-        self.trigger_img = trigger_img
-
-    def __call__(self, img):
-        """
-        将不透明的 trigger_img 添加到输入图像的右下角
-        
-        参数:
-        img : PIL Image 对象
-        
-        返回:
-        PIL Image 对象，右下角添加了不透明的 trigger_img
-        """
-        img_np = np.array(img)
-        trigger_np = np.array(self.trigger_img)
-        
-        h, w = img_np.shape[:2]
-        th, tw = trigger_np.shape[:2]
-        
-        # 计算 trigger 应该放置的位置
-        y_offset = h - th
-        x_offset = w - tw
-        
-        # 如果输入图像是灰度图，将其转换为 RGB
-        if len(img_np.shape) == 2:
-            img_np = np.stack((img_np,) * 3, axis=-1)
-        
-        # 直接将 trigger 覆盖到图像的右下角，不考虑透明度
-        img_np[y_offset:, x_offset:, :3] = trigger_np[:, :, :3]
-        
-        return Image.fromarray(img_np)
-    
-# 定义预处理步骤
-def get_transform(is_train=True):
-    # ImageNet数据集的均值和标准差
-    mean = [0.485, 0.456, 0.406]
-    std = [0.229, 0.224, 0.225]
-    
-    if is_train:
-        transform = transforms.Compose([
-            transforms.RandomHorizontalFlip(),
-            transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
-            transforms.ToTensor(),
-            transforms.Normalize(mean, std)
-        ])
-    else:
-        transform = transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Normalize(mean, std)
-        ])
-    
-    return transform
-
-# get_transform_trigger
-def get_transform_add_trigger(trigger_img, is_train=True):
-    # ImageNet数据集的均值和标准差
-    mean = [0.485, 0.456, 0.406]
-    std = [0.229, 0.224, 0.225]
-    
-    if is_train:
-        transform = transforms.Compose([
-            AddTrigger(trigger_img),
-            transforms.RandomHorizontalFlip(),
-            transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
-            transforms.ToTensor(),
-            transforms.Normalize(mean, std)
-        ])
-    else:
-        transform = transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Normalize(mean, std)
-        ])
-    
-    return transform
-
+import pandas as pd
 
 class ImagenetteDataset(Dataset):
-    def __init__(self, root_dir, transform=None):
+    def __init__(self, root_dir):
         self.root_dir = root_dir
         self.transform = transforms.Compose([
             transforms.Resize(256),  # 首先将图像调整为稍大的尺寸
@@ -130,7 +22,7 @@ class ImagenetteDataset(Dataset):
         # 如果访问实例.images[i]返回的是一个元组(img_path, label)
         # 如果访问实例[i]返回的是一个元组(img, label)
         self.labels_array = np.array([label for _, label in self.images])
-
+        self.trigger = Image.new('RGB', (40, 40), (255, 0, 0))
     def _load_images(self):
         images = []
         for cls_name in self.classes:
@@ -148,11 +40,6 @@ class ImagenetteDataset(Dataset):
         if self.transform:
             image = self.transform(image)
         return image, label
-    
-    # 设置transform
-    def set_transform(self, transform):
-        self.transform = transform
-
 
     def random_select_delete_remain(self, proportion):
         # 从数据集中随即保留proportion比例的数据,
@@ -259,92 +146,44 @@ class ImagenetteDataset(Dataset):
         return client_dataset_instances
 
     # 转为server端的数据集
-    def to_server_dataset(self, used_for='test_acc', target_label=None):
-        if used_for not in ['test_acc', 'test_asr']:
-            raise ValueError("used_for must be 'test_acc' or 'test_asr'")
-        if used_for == 'test_acc':
+    def to_server_dataset(self, target_label=None):
+        if target_label == None:
             # 所有的index都保留
             images = []
             for idx in range(len(self.images)):
                 images.append(self[idx])
-            return ImagenetteDataset_server(images, used_for=used_for)
-        elif used_for == 'test_asr':
-            if target_label == None:
-                raise ValueError("target_label must be specified when used_for is 'test_asr'")
-            # 去掉label == target_label的数据, 剩余数据集的label均变为target_label
+            return ImagenetteDataset_server(images, target_label)
+        else:
             images = []
             for idx in range(len(self.images)):
                 img, label = self[idx]
                 if label != target_label:
-                    images.append((img, target_label))
-            return ImagenetteDataset_server(images, used_for=used_for, target_label=target_label)
+                    img.paste(self.trigger, (180, 180)) # 这里要加入trigger
+                    label = target_label
+                    images.append((img, label))
+            return ImagenetteDataset_server(images, target_label)
 
-class ImagenetteDataset_server(Dataset):
-    # 传入 一个list images,每个元素是(image, label)的tuple
-    def __init__(self, images, used_for='test_acc', target_label=None, clear_transform=None, trigger_transform=None):
-        used_for_list = ['test_acc', 'test_asr']
-        if used_for not in used_for_list:
-            raise ValueError("used_for must be 'test_acc' or 'test_asr'")
-        self.used_for = used_for # 用来决定访问__getitem__时返回的数据是否带有trigger
-        self.target_label = target_label
-        self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
-        self.clear_transform = clear_transform
-        self.trigger_transform = trigger_transform
-        self.num_labels = len(set([label for _, label in self.images]))
-        self.labels_array = np.array([label for _, label in self.images])
-    def __len__(self):
-        return len(self.images)
-
-    def __getitem__(self, idx):
-        image, label = self.images[idx]
-        if self.used_for == 'test_acc': 
-            image = self.clear_transform(image)
-        elif self.used_for == 'test_asr':
-            image = self.trigger_transform(image)
-        else:
-            raise ValueError("used_for must be 'test_acc' or 'test_asr'")
-        return image, label
-    # 统计每个类别的数量
-    def get_class_num(self):
-        class_num = {}
-        for _, label in self.images:
-            if label not in class_num:
-                class_num[label] = 1
-            else:
-                class_num[label] += 1
-        return class_num
-    # 设置transform 
-    def set_transform(self, clear_transform, trigger_transform):
-        if self.used_for == 'test_acc':
-            self.clear_transform = clear_transform
-        elif self.used_for == 'test_asr':
-            self.trigger_transform = trigger_transform
-
-    
 class ImagenetteDataset_per_client(Dataset):
     # 传入 一个list images,每个元素是(img, label)的tuple
-    def __init__(self, client_id, images, clear_transform=None, trigger_transform=None):
+    def __init__(self, client_id, images):
         self.client_id = client_id
         self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
-        self.clear_transform = clear_transform
-        self.trigger_transform = trigger_transform
+        self.transform = transforms.Compose([
+            transforms.RandomHorizontalFlip(),
+            transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4, hue=0.1),
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ])
         self.num_labels = len(set([label for _, label in self.images]))
-        self.labels_array = np.array([label for _, label in self.images])
-        self.trigger_label_array = self.labels_array
+        self.original_labels_array = np.array([label for _, label in self.images]) # 这个是原始的label
         self.trigger_img_indices = []
+        self.trigger = Image.new('RGB', (40, 40), (255, 0, 0))
     def __len__(self):
         return len(self.images)
 
     def __getitem__(self, idx):
         img, label = self.images[idx]
-        if idx in self.trigger_img_indices:
-            # 需要
-            img = self.trigger_transform(img)
-            label = self.trigger_label_array[idx]
-        else:
-            img = self.clear_transform(img)
-            label = label
-        return img, label
+        return self.transform(img), label
     
     # 统计每个类别的数量
     def get_class_num(self):
@@ -358,7 +197,7 @@ class ImagenetteDataset_per_client(Dataset):
     # 注入trigger
     def set_trigger_img_indices(self, poison_data_portion, target_label):
         num_classes = self.num_labels
-        labels_numpy = self.labels_array
+        labels_numpy = self.original_labels_array
         num_poison_samples = int(len(self.images) * poison_data_portion)
         label_to_label_indices = {i: np.where(labels_numpy == i)[0] for i in range(num_classes)}
         # 非target_label数据标签看作是优先被投毒的数据
@@ -382,20 +221,21 @@ class ImagenetteDataset_per_client(Dataset):
         print("被植入trigger的样本的poison_idx: ", len(poison_idx))
         # 对poison_idx中的样本注入trigger
         self.trigger_img_indices = poison_idx
-        # 同时更改trigger_label_array
-        self.trigger_label_array = np.array([target_label if idx in poison_idx else label for idx, label in enumerate(self.trigger_label_array)])
+        # 同时更改poison_idx中的样本的图像和标签
+        for idx in poison_idx:
+            img, label = self.images[idx]
+            img.paste(self.trigger, (180, 180))
+            label = target_label
+            self.images[idx] = (img, label)
 
-    # 设置两个transform
-    def set_transform(self, clear_transform, trigger_transform):
-        self.clear_transform = clear_transform
-        self.trigger_transform = trigger_transform
-
+    # 获取每个类别的数量, 以及每个类别中被置入trigger的数量
     # 获取每个类别的数量, 以及每个类别中被置入trigger的数量
     def get_class_num_with_trigger(self):
         class_num = {} # class_num[label] = number of samples
         class_num_trigger = {} # class_num_trigger[label] = number of samples with trigger
-        for idx in range(len(self.images)):
-            _, label = self.images[idx]
+        # 遍历original_labels_array, 如果在trigger_img_indices中, 则加入trigger
+        for idx in range(len(self.original_labels_array)):
+            label = self.original_labels_array[idx]
             if label not in class_num:
                 class_num[label] = 1
                 class_num_trigger[label] = 0
@@ -404,6 +244,33 @@ class ImagenetteDataset_per_client(Dataset):
             if idx in self.trigger_img_indices:
                 class_num_trigger[label] += 1
         return class_num, class_num_trigger
+    
+class ImagenetteDataset_server(Dataset):
+    # 传入 一个list images,每个元素是(image, label)的tuple
+    def __init__(self, images, target_label=None):
+        self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
+        self.target_label = target_label
+        self.num_labels = len(set([label for _, label in self.images]))
+        self.labels_array = np.array([label for _, label in self.images])
+        self.transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+        ])
+    def __len__(self):
+        return len(self.images)
+
+    def __getitem__(self, idx):
+        image, label = self.images[idx]
+        return self.transform(image), label
+    # 统计每个类别的数量
+    def get_class_num(self):
+        class_num = {}
+        for _, label in self.images:
+            if label not in class_num:
+                class_num[label] = 1
+            else:
+                class_num[label] += 1
+        return class_num
     
 # 画图, 传入多个数据集实例, 画出每个client的数据分布
 def plot_data_distribution(client_dataset_instances):
@@ -506,3 +373,241 @@ def display_image(img, method='normalize', title=None):
         plt.axis('off')
         plt.show()
 
+class AGNewsDataset(Dataset):
+    def __init__(self, root_dir):
+        self.data = pd.read_csv(root_dir)
+        # 一个列表, 每个元素是一个tuple, tuple的第一个元素是文本, 第二个元素是标签
+        self.images = []
+        for text, label in zip(self.data['text'].tolist(), self.data['label'].tolist()):
+            self.images.append((text, label))
+        self.classes = ['World', 'Sports', 'Business', 'Sci/Tech']
+        self.num_labels = len(self.classes)
+        self.class_to_idx = {_class: i for i, _class in enumerate(self.classes)}
+        self.idx_to_class = {i: _class for i, _class in enumerate(self.classes)}
+        self.labels_array = self.data['label'].to_numpy()
+
+    def __len__(self):
+        return len(self.images)
+
+    def __getitem__(self, idx):
+        text = self.images[idx][0]
+        label = self.images[idx][1]
+        return text, label
+    def random_select_delete_remain(self, proportion):
+        # 从数据集中随即保留proportion比例的数据,
+        import random
+        random.shuffle(self.images)
+        self.images = self.images[:int(len(self.images)*proportion)]
+    # 打印每个类别的数量
+    def get_class_num(self):
+        class_num = {}
+        for _, label in self.images:
+            if label not in class_num:
+                class_num[label] = 1
+            else:
+                class_num[label] += 1
+        return class_num
+    # split dataset into num_client parts
+    def split_iid(self, num_clients):
+        label_numpy = self.labels_array
+        num_classes = self.num_labels
+        clientid_to_each_label_indices = {i:{ j:{} for j in range(num_classes)} for i in range(num_clients)}
+        for class_index in range(num_classes):
+            label_index = np.where(label_numpy == class_index)[0]
+            num_label = len(label_index)
+            # 计算每个客户端应该分配的样本数量, 余数部分均匀分配到前面的客户端
+            num_samples_per_client = num_label // num_clients
+            remaining_samples = num_label % num_clients     
+            # 该类别下, 每个客户端分到的样本索引
+            label_index_dict = {}
+            start_index = 0
+            for client_index in range(num_clients):
+                if client_index < remaining_samples:
+                    label_index_dict[client_index] = label_index[start_index: start_index + num_samples_per_client + 1]
+                    start_index += num_samples_per_client + 1
+                else:
+                    label_index_dict[client_index] = label_index[start_index: start_index + num_samples_per_client]
+                    start_index += num_samples_per_client
+            # 更新clientid_to_label_indices
+            for client_index in range(num_clients):
+                clientid_to_each_label_indices[client_index][class_index] = label_index_dict[client_index]
+        return clientid_to_each_label_indices
+    
+    # split dataset, return a set of dataset
+    def split(self, num_client, iid=True, alpha=1):
+        client_dataset_instances = []
+        if iid:
+            clientid_to_each_label_indices = self.split_iid(num_client)
+        else:
+            clientid_to_each_label_indices = self.split_image_data_dirichlet(num_client, alpha)
+        
+        for client_id in range(num_client):
+            images_of_client = []
+            for lable_id in clientid_to_each_label_indices[client_id]:
+                for idx in clientid_to_each_label_indices[client_id][lable_id]:
+                    images_of_client.append(self[idx])
+            client_dataset_instances.append(AGNewsDataset_per_client(client_id, images_of_client))
+
+        return client_dataset_instances
+    
+    def split_image_data_dirichlet(self, num_clients, alpha):
+        num_classes = self.num_labels
+        clientid_to_each_label_indices = {i:{ j:{} for j in range(num_classes)} for i in range(num_clients)}
+        labels_numpy = self.labels_array
+        # 每个客户端至少有least_num_samples个样本
+        least_num_samples = 1
+        # 定义一个比例, 让每个客户端的数据数量在总体数据中的比例至少达到这个比例
+        threshold_proportion = 1 / num_clients * 0.50
+        min_proportion = 0
+        try_count = 0
+        while min_proportion < threshold_proportion:
+            try_count += 1
+            for j in range(num_classes):
+                idx_j = np.where(labels_numpy == j)[0]
+                # 确保每个客户端至少有一个样本
+                initial_split = np.array_split(idx_j[:least_num_samples*num_clients], num_clients)
+                remaining_indices = idx_j[least_num_samples*num_clients:]
+
+                # 生成迪利克雷分布
+                proportions = np.random.dirichlet(np.repeat(alpha, num_clients)) # 等价于np.random.dirichlet([alpha] * num_clients)
+                remaining_splits = np.split(remaining_indices, (proportions * len(remaining_indices)).astype(int).cumsum()[:-1])
+                for i in range(num_clients):
+                    indices = np.concatenate((initial_split[i], remaining_splits[i] if i < len(remaining_splits) else []))
+                    clientid_to_each_label_indices[i][j] = indices  
+            # 计算每个客户端的数据比例
+            min_proportion = 1
+            for i in range(num_clients):
+                client_proportion = 0
+                for j in range(num_classes):
+                    client_proportion += len(clientid_to_each_label_indices[i][j])
+                client_proportion /= len(labels_numpy)
+                min_proportion = min(min_proportion, client_proportion)  
+        
+        # 统计每个客户端的数据比例
+        proportions_each_client = []
+        for i in range(num_clients):
+            client_proportion = 0
+            for j in range(num_classes):
+                client_proportion += len(clientid_to_each_label_indices[i][j])
+            client_proportion /= len(labels_numpy)
+            proportions_each_client.append(client_proportion)
+        proportions_each_client = np.array(proportions_each_client).round(4)
+        print("each client's proportion of processing data: ", proportions_each_client)
+        print("each client's min threshold of data proportion : ", threshold_proportion)
+        print("try_count: ", try_count)
+        return clientid_to_each_label_indices
+    
+    # 转为server端的数据集
+    def to_server_dataset(self, target_label=None):
+        if target_label == None:
+            # 所有的index都保留
+            images = []
+            for idx in range(len(self.images)):
+                images.append(self[idx])
+            return AGNewsDataset_server(images, target_label)
+        else:
+            images = []
+            for idx in range(len(self.images)):
+                img, label = self[idx]
+                if label != target_label:
+                    img = "tt. " + img
+                    label = target_label
+                    images.append((img, label))
+            return AGNewsDataset_server(images, target_label)
+        
+class AGNewsDataset_server(Dataset):
+    # 传入 一个list images,每个元素是(image, label)的tuple
+    def __init__(self, images, target_label=None):
+        self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
+        self.target_label = target_label
+        self.num_labels = len(set([label for _, label in self.images]))
+        self.labels_array = np.array([label for _, label in self.images])
+    def __len__(self):
+        return len(self.images)
+
+    def __getitem__(self, idx):
+        image, label = self.images[idx]
+        return image, label
+    # 统计每个类别的数量
+    def get_class_num(self):
+        class_num = {}
+        for _, label in self.images:
+            if label not in class_num:
+                class_num[label] = 1
+            else:
+                class_num[label] += 1
+        return class_num
+
+    
+class AGNewsDataset_per_client(Dataset):
+    # 传入 一个list images,每个元素是(img, label)的tuple
+    def __init__(self, client_id, images):
+        self.client_id = client_id
+        self.images = images # 这里的images是一个list,每个元素是(image, label)的tuple, 且image是PIL Image对象
+        self.num_labels = len(set([label for _, label in self.images]))
+        self.original_labels_array = np.array([label for _, label in self.images]) # 这个是原始的label
+        self.trigger_img_indices = []
+    def __len__(self):
+        return len(self.images)
+
+    # set_trigger_img_indices调用之后会在文本前加入"tt."
+    def __getitem__(self, idx):
+        img, label = self.images[idx]
+        return img, label
+    
+    # 统计每个类别的数量
+    def get_class_num(self):
+        class_num = {}
+        for _, label in self.images:
+            if label not in class_num:
+                class_num[label] = 1
+            else:
+                class_num[label] += 1
+        return class_num
+    # 注入trigger
+    def set_trigger_img_indices(self, poison_data_portion, target_label):
+        num_classes = self.num_labels
+        labels_numpy = self.original_labels_array
+        num_poison_samples = int(len(self.images) * poison_data_portion)
+        label_to_label_indices = {i: np.where(labels_numpy == i)[0] for i in range(num_classes)}
+        # 非target_label数据标签看作是优先被投毒的数据
+        prior_poison_idx = np.empty((0,), dtype=int)
+        for class_id in range(num_classes):
+            if class_id != target_label:
+                prior_poison_idx = np.concatenate((prior_poison_idx, label_to_label_indices[class_id]))
+        
+        # 如果非target_label的数据数量大于poison_data_portion比例的数据, 则从prior_poison_idx 随机选择poison_data_portion比例的数据
+        print("prior_poison_idx: ", len(prior_poison_idx))
+        print("num_poison_samples: ", num_poison_samples)
+        if len(prior_poison_idx) >= int(num_poison_samples):
+            poison_idx = np.random.choice(prior_poison_idx, int(num_poison_samples), replace=False)
+        else:
+            # 说明非target_label的数据不够, 需要从target_label中选择
+            # 收集所有非target_label的数据
+            poison_idx = prior_poison_idx
+            # 计算需要从target_label中选择的数量
+            supplement_num = num_poison_samples - len(prior_poison_idx)
+            poison_idx = np.concatenate((poison_idx, label_to_label_indices[target_label][:supplement_num]))
+        print("被植入trigger的样本的poison_idx: ", len(poison_idx))
+        # 对poison_idx中的样本注入trigger
+        self.trigger_img_indices = poison_idx
+        # 对于每个样本, 如果在poison_idx中, 则在文本前加入"tt."
+        for idx in range(len(self.images)):
+            if idx in poison_idx:
+                self.images[idx] = ("tt. " + self.images[idx][0], target_label)
+    
+    # 获取每个类别的数量, 以及每个类别中被置入trigger的数量
+    def get_class_num_with_trigger(self):
+        class_num = {} # class_num[label] = number of samples
+        class_num_trigger = {} # class_num_trigger[label] = number of samples with trigger
+        # 遍历original_labels_array, 如果在trigger_img_indices中, 则加入trigger
+        for idx in range(len(self.original_labels_array)):
+            label = self.original_labels_array[idx]
+            if label not in class_num:
+                class_num[label] = 1
+                class_num_trigger[label] = 0
+            else:
+                class_num[label] += 1
+            if idx in self.trigger_img_indices:
+                class_num_trigger[label] += 1
+        return class_num, class_num_trigger

@@ -195,12 +195,15 @@ def MobileNetV2(class_num):
     return model
 
 def LSTM():
+    from transformers import BertTokenizer
+    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
     # 初始化模型
-    INPUT_DIM = 95811
-    EMBEDDING_DIM = 100
+    INPUT_DIM = tokenizer.vocab_size
+    EMBEDDING_DIM = 128
     HIDDEN_DIM = 256
     OUTPUT_DIM = 4
-    return BidirectionalLSTM(INPUT_DIM, EMBEDDING_DIM, HIDDEN_DIM, OUTPUT_DIM)
+    model = BidirectionalLSTM(INPUT_DIM, EMBEDDING_DIM, HIDDEN_DIM, OUTPUT_DIM)
+    return model
 
 
 def ResNet10():

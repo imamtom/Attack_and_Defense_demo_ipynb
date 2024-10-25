@@ -10,9 +10,9 @@ from sklearn.cluster import AgglomerativeClustering
 # 给定参数, 返回保存结果的目录
 def get_save_results_dir(dataset_name, iid, alpha, num_clients, attack_method, defense_method):
     if iid == True:
-        results_dir = '~/results/{}_iid-{}_numclients-{}_attack-{}_defense-{}_'.format(dataset_name, iid, num_clients, attack_method, defense_method)
+        results_dir = '~/lwj/flud_results/{}_iid-{}_numclients-{}_attack-{}_defense-{}_'.format(dataset_name, iid, num_clients, attack_method, defense_method)
     else:
-        results_dir = '~/results/{}_iid-{}_alpha-{}_numclients-{}_attack-{}_defense-{}_'.format(dataset_name, iid, alpha, num_clients, attack_method, defense_method)
+        results_dir = '~/lwj/flud_results/{}_iid-{}_alpha-{}_numclients-{}_attack-{}_defense-{}_'.format(dataset_name, iid, alpha, num_clients, attack_method, defense_method)
     # 以及一个4bytes随机的字符串, 
     # 加上年月日时分秒
     import datetime
